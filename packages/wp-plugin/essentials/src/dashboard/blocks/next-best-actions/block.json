@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "ionos-dashboard-page/next-best-actions",
+  "version": "0.1.0",
+  "title": "NBA",
+  "category": "widgets",
+  "icon": "index-card",
+  "description": "Next Best Actions",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "textdomain": "ionos-essentials",
+  "editorScript": "file:./index.js",
+  "viewScript": [
+    "file:./view.js",
+    "wp-util"
+  ],
+  "render": "file:./render.php"
+}

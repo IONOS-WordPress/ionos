@@ -2,6 +2,9 @@
 
 namespace ionos_wordpress\essentials\dashboard;
 
+use function ionos_wordpress\essentials\dashboard\blocks\next_best_actions\getNBAData;
+use function ionos_wordpress\essentials\dashboard\blocks\next_best_actions\model\getNBAElements;
+
 use const ionos_wordpress\essentials\PLUGIN_DIR;
 
 /*
@@ -41,6 +44,8 @@ if (is_file(__DIR__ . '/editor.php')) {
   \register_block_type(PLUGIN_DIR . '/build/dashboard/blocks/deep-links');
   \register_block_type(PLUGIN_DIR . '/build/dashboard/blocks/quick-links');
   \register_block_type(PLUGIN_DIR . '/build/dashboard/blocks/vulnerability');
+  \register_block_type(PLUGIN_DIR . '/build/dashboard/blocks/next-best-actions');
+
 });
 
 // remove our blocks from all other post types
@@ -165,3 +170,44 @@ if (is_file(__DIR__ . '/editor.php')) {
 		EOF
   );
 });
+
+\add_action('load-' . ADMIN_PAGE_HOOK, function () {
+
+});
+add_action('wp_ajax_execute-nba-callback', function() {
+  $process = isset($_GET['process']) ? sanitize_text_field($_GET['process']) : '';
+  $id = isset($_GET['id']) ? sanitize_text_field($_GET['id']) : '';
+
+  if (empty($process) || empty($id)) {
+    \wp_send_json_error(new \WP_Error('missing_parameters', 'Missing parameters'));
+  }
+
+  require_once PLUGIN_DIR . '/build/dashboard/blocks/next-best-actions/data.php';
+  $elements = getNBAData();
+  if (! is_array($elements)) {
+    \wp_send_json_error(new \WP_Error('no_actions', 'No actions found'));
+  }
+
+  foreach ($elements as $element) {
+    if ($element->__get('id') === $id ) {
+
+      switch ($process) {
+        case 'click-nba-dismiss':
+          $element->__set('dismissed', true);
+          \wp_send_json_success(['addClass' => 'dismissed']);
+          break;
+        case 'click-nba-action':
+          $callback = $element->__get('completeOnClickCallback');
+          $result = \call_user_func($callback) === true;
+          if ($result === true) {
+            $element->__set('completed', true);
+          }
+          \wp_send_json_success( [ 'redirect' => $element->__get('link') ] );
+          break;
+      }
+    }
+  }
+
+  \wp_send_json_error(new \WP_Error('action_not_found', 'Action not found'));
+});
+
