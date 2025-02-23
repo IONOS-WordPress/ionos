@@ -142,7 +142,7 @@ msgstr "Quick Links"
 msgid "Hello World !"
 msgstr "Hola a todos."
 
-#: inc/dashboard/index.php:35
+#: inc/dashboard/index.php:37
 msgid "IONOS Dashboard"
 msgstr "Cuadro de mandos de IONOS"
 
@@ -195,3 +195,21 @@ msgstr "Vulnerabilidad"
 msgctxt "block description"
 msgid "Show wp scan data."
 msgstr "Mostrar datos de escaneo wp."
+
+#: inc/dashboard/blocks/nba/render.php:15
+msgid "Next best actions ⚡"
+msgstr ""
+
+#: build/dashboard/blocks/next-best-actions/block.json
+msgctxt "block title"
+msgid "NBA"
+msgstr ""
+
+#: build/dashboard/blocks/next-best-actions/block.json
+msgctxt "block description"
+msgid "Next Best Actions"
+msgstr ""
+
+#: inc/dashboard/blocks/nba/render.php:16
+msgid "Description of this block"
+msgstr ""

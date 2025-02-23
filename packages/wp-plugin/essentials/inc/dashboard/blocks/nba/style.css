@@ -1,0 +1,35 @@
+#ionos-dashboard__essentials_nba {
+  min-height:0px;
+}
+
+#ionos-dashboard__essentials_nba > .wp-block-group {
+  margin-top:0px;
+  margin-bottom:15px;
+  padding-top:0;
+  padding-right:0;
+  padding-bottom:0;
+  padding-left:0
+}
+
+#ionos-dashboard__essentials_nba > .wp-block-columns {
+  border-style:none;
+  border-width:0px;
+  display: flex;
+  flex-wrap: wrap !important;
+}
+
+#ionos-dashboard__essentials_nba > .wp-block-columns > .wp-block-column {
+  border-color:#bcc8d4;
+  border-width:1px;
+  border-radius:24px;
+  flex: 1 1 calc(33.333% - 14px);
+  max-width: calc(33.333% - 14px);
+  box-sizing: border-box;
+}
+
+/* Ensure the last columns do not stretch */
+#ionos-dashboard__essentials_nba > .wp-block-columns > .wp-block-column:nth-child(3n+1) {
+  margin-left: 0;
+}
+
+

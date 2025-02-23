@@ -39,7 +39,7 @@ msgstr "IONOS-Gruppe"
 msgid "https://www.ionos-group.com/brands.html"
 msgstr "https://www.ionos-group.com/brands.html"
 
-#: inc/dashboard/index.php:35
+#: inc/dashboard/index.php:37
 msgid "IONOS Dashboard"
 msgstr "IONOS Dashboard"
 
@@ -195,3 +195,21 @@ msgstr "Sicherheits-Scan"
 #: build/dashboard/blocks/vulnerability/render.php:36
 msgid "IONOS Security Plugin not available"
 msgstr "IONOS Security Plugin nicht verfügbar"
+
+#: inc/dashboard/blocks/nba/render.php:15
+msgid "Next best actions ⚡"
+msgstr ""
+
+#: build/dashboard/blocks/next-best-actions/block.json
+msgctxt "block title"
+msgid "NBA"
+msgstr ""
+
+#: build/dashboard/blocks/next-best-actions/block.json
+msgctxt "block description"
+msgid "Next Best Actions"
+msgstr ""
+
+#: inc/dashboard/blocks/nba/render.php:16
+msgid "Description of this block"
+msgstr ""
